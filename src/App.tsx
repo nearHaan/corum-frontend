@@ -79,7 +79,7 @@ const LoginForm: React.FC = () => {
               Forgot password?
             </a>
           </div>
-          <Button type='submit' loading={loading} className="my-10 max-w-30 uppercase bg-[#9561CC]">
+          <Button type='submit' loading={loading} className="my-10 max-w-30 uppercase bg-[#147324]">
             Sign in
           </Button>
         </form>
