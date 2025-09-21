@@ -1,19 +1,25 @@
 import { Outlet } from "react-router-dom";
+import { Button } from "../../components/Button";
 
 export default function HomePage() {
   return (
-    <div className="w-screen min-h-screen flex flex-col items-center justify-center font-mono text-black">
-      <header className="w-full flex items-center justify-evenly shadow-[0px_2px_#00000020] z-30">
-        <h2 className="text-lg my-2 mx-5">CORUM</h2>
-        <div className="rounded my-2 mx-auto w-80 ring-1 ring-[#00000020]">
+    <div className="min-h-screen w-screen overflow-x-hidden flex flex-col items-center justify-center font-mono text-black">
+      <header className="w-full flex items-center justify-between shadow-[0px_2px_#00000020] z-30 px-5">
+        <h2 className="text-2xl my-2">CORUM</h2>
+        <div className="flex-1 max-w-md rounded-lg my-2 mx-5 ring-1 ring-[#00000020]">
           <input
-            className="p-2"
+            className="p-2 w-full"
             type="text"
             placeholder="Search"
             autoComplete="false"
           />
         </div>
-        <div>Ask</div>
+        <div className="flex items-center justify-center gap-x-2">
+          <Button type="submit" loading={false}>
+            Ask a question
+          </Button>
+          <div className="w-10 h-10 rounded-full bg-gray-400"></div>
+        </div>
       </header>
       <main className="flex-1">
         <Outlet />
