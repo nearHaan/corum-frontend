@@ -5,7 +5,7 @@ import SideBarButton from "../../components/sidebar_btn";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen w-screen overflow-x-hidden flex flex-col items-center justify-center font-mono text-black">
+    <div className="min-h-screen w-screen overflow-x-hidden flex flex-col items-center justify-center text-black">
       <header className="relative sticky top-0 w-full flex items-center justify-between shadow-[0px_2px_#00000020] z-30 px-5">
         <h2 className="text-2xl my-2">CORUM</h2>
         <div className="flex-1 max-w-md rounded-lg my-2 mx-5 ring-1 ring-[#00000020]">
@@ -37,7 +37,13 @@ export default function HomePage() {
               icon={ArrowRightFromLineIcon}
             />
           </div>
-          <div className="p-5">//</div>
+          <div className="p-5">
+            <p className="text-lg mb-3">My Rooms</p>
+            <div className="flex flex-col">
+              <p className="text-gray-500">abc</p>
+              <p className="text-gray-500">abc</p>
+            </div>
+          </div>
         </div>
         <Outlet />
       </main>
