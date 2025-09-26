@@ -46,6 +46,24 @@ export default function HomePage() {
           </div>
         </div>
         <Outlet />
+        <div className="w-80 h-screen shadow-[-2px_0px_#00000020] flex flex-col">
+          <div className="p-5 w-full gap-y-2 flex flex-col">
+            <p className="text-lg mb-3">Inbox</p>
+            <div className="flex flex-col rounded-lg bg-gray-100 p-2">
+              <p className="text-gray-400 text-xs mb-1">New Answer</p>
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Voluptates deserunt corrupti cumque possimus incidunt tenetur
+              </p>
+            </div>
+          </div>
+          <div className="p-5">
+            <p className="text-lg mb-3">Quich Tags</p>
+            <div className="flex flex-col">
+              <p className="text-gray-500">abc</p>
+            </div>
+          </div>
+        </div>
       </main>
     </div>
   );
