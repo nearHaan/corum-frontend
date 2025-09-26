@@ -11,7 +11,7 @@ export const Button: React.FC<ButtonProps> = ({
   return (
     <button
       className={`
-        py-2 px-5 uppercase bg-[#147324] text-white relative
+        py-2 px-5 uppercase bg-[#147324] text-white text-xs relative
         ${className}
       `}
       disabled={loading || props.disabled}
