@@ -1,5 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { Button } from "../../components/Button";
+import { ArrowRightFromLineIcon, CircleQuestionMark } from "lucide-react";
+import SideBarButton from "../../components/sidebar_btn";
 
 export default function HomePage() {
   return (
@@ -22,7 +24,21 @@ export default function HomePage() {
         </div>
       </header>
       <main className="w-full h-full flex items-center justify-center">
-        <div className="w-80 h-screen bg-red-300">//</div>
+        <div className="w-80 h-screen shadow-[2px_0px_#00000020] flex flex-col">
+          <div className="p-5 gap-y-2 flex flex-col items-center">
+            <SideBarButton
+              isActive={true}
+              title="Questions"
+              icon={CircleQuestionMark}
+            />
+            <SideBarButton
+              isActive={false}
+              title="Public Rooms"
+              icon={ArrowRightFromLineIcon}
+            />
+          </div>
+          <div className="p-5">//</div>
+        </div>
         <Outlet />
       </main>
     </div>
