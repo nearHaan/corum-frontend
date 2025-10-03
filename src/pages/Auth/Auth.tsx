@@ -10,7 +10,7 @@ export default function AuthPage() {
           src="src/assets/login-illustration.png"
         />
         <h3 className="max-w-lg text-[30px] px-10 font-bold text-black">
-          Your next big idea starts here — sign in
+          Your next big idea starts here
         </h3>
       </div>
       <Outlet />

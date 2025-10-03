@@ -4,6 +4,7 @@ import HomePage from "./pages/Home/Home";
 import QuestionsPage from "./pages/Home/tabs/Questions";
 import PublicRoomsPage from "./pages/Home/tabs/PublicRooms";
 import LoginTab from "./pages/Auth/tabs/LoginTab";
+import RegisterTab from "./pages/Auth/tabs/RegisterTab";
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
         {/* <Route path="/login" element={<Login />} /> */}
         <Route path="/auth" element={<AuthPage />}>
           <Route index element={<LoginTab />} />
-          <Route path="rooms" element={<PublicRoomsPage />} />
+          <Route path="register" element={<RegisterTab />} />
         </Route>
         <Route path="/" element={<HomePage />}>
           <Route index element={<QuestionsPage />} />

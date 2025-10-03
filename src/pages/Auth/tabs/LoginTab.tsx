@@ -86,7 +86,10 @@ export default function LoginTab() {
           Sign in
         </Button>
         <div className="text-sm">
-          Don't have an account? <a className="text-blue-200">Register here</a>
+          Don't have an account?{" "}
+          <a className="text-blue-200" href="/auth/register">
+            Register here
+          </a>
         </div>
       </form>
     </div>
