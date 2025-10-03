@@ -4,6 +4,8 @@ import { ArrowRightFromLineIcon, CircleQuestionMark } from "lucide-react";
 import SideBarButton from "../../components/sidebar_btn";
 
 export default function HomePage() {
+  const myrooms = ["project-group", "hobby-project"];
+  const quickTags = ["node.js", "python", "C++", "C++", "C++", "C++"];
   return (
     <div className="min-h-screen w-screen overflow-x-hidden flex flex-col items-center justify-center text-black">
       <header className="relative sticky top-0 w-full flex items-center justify-between shadow-[0px_2px_#00000020] z-30 px-5">
@@ -23,7 +25,7 @@ export default function HomePage() {
           <div className="w-10 h-10 rounded-full bg-gray-400"></div>
         </div>
       </header>
-      <main className="w-full h-full flex items-center justify-center">
+      <main className="w-full h-full flex items-start justify-center">
         <div className="w-80 h-screen shadow-[2px_0px_#00000020] flex flex-col">
           <div className="p-5 gap-y-2 flex flex-col items-center">
             <SideBarButton
@@ -40,8 +42,9 @@ export default function HomePage() {
           <div className="p-5">
             <p className="text-lg mb-3">My Rooms</p>
             <div className="flex flex-col">
-              <p className="text-gray-500">abc</p>
-              <p className="text-gray-500">abc</p>
+              {myrooms.map((item) => (
+                <p className="text-gray-500">{item}</p>
+              ))}
             </div>
           </div>
         </div>
@@ -51,16 +54,17 @@ export default function HomePage() {
             <p className="text-lg mb-3">Inbox</p>
             <div className="flex flex-col rounded-lg bg-gray-100 p-2">
               <p className="text-gray-400 text-xs mb-1">New Answer</p>
-              <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Voluptates deserunt corrupti cumque possimus incidunt tenetur
-              </p>
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
             </div>
           </div>
           <div className="p-5">
             <p className="text-lg mb-3">Quich Tags</p>
-            <div className="flex flex-col">
-              <p className="text-gray-500">abc</p>
+            <div className="grid grid-cols-2 gap-2 w-fit">
+              {quickTags.map((item) => (
+                <p className="text-gray-500 mx-1 text-sm rounded-full py-1 px-2 bg-gray-100 w-fit">
+                  {item}
+                </p>
+              ))}
             </div>
           </div>
         </div>
