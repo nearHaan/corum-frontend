@@ -8,7 +8,7 @@ export default function QuestionExpandedPage() {
     {
       id: "sdsd",
       votes: 12,
-      desc: "dsddfdf df dfdf dffd f df dffd",
+      desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus voluptate iste quo sapiente repudiandae ea nemo enim nulla magni et, autem odio eligendi incidunt ipsa? Quo quas dicta facere fugit!",
       comments: [
         {
           id: "ddffd",
@@ -21,7 +21,7 @@ export default function QuestionExpandedPage() {
     {
       id: "fdfddfdf",
       votes: 13,
-      desc: "dsddfdf df dfdf dffd f df dffd",
+      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae laboriosam placeat quisquam pariatur hic nihil quia ut! Consequatur eaque nemo asperiores hic suscipit similique ab rerum, excepturi impedit aut. Blanditiis.",
       comments: [
         {
           id: "dfdfdfddfd",

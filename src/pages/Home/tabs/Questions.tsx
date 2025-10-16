@@ -19,34 +19,6 @@ export default function QuestionsPage() {
       comments: 5,
     },
   ]);
-  const [forums, setForums] = useState([
-    {
-      id: "sdsd",
-      votes: 12,
-      desc: "dsddfdf df dfdf dffd f df dffd",
-      comments: [
-        {
-          id: "ddffd",
-          username: "fdfd",
-          comment: "dfdfd",
-          timestamp: "dfdf",
-        },
-      ],
-    },
-    {
-      id: "fdfddfdf",
-      votes: 13,
-      desc: "dsddfdf df dfdf dffd f df dffd",
-      comments: [
-        {
-          id: "dfdfdfddfd",
-          username: "fdfd",
-          comment: "dfdfd",
-          timestamp: "dfdf",
-        },
-      ],
-    },
-  ]);
   return (
     <div className="w-full h-full flex flex-col p-2 items-center justify-center">
       <div className="h-10"></div>
@@ -58,15 +30,6 @@ export default function QuestionsPage() {
           tags={question.tags}
           views={question.views}
           comments={question.comments}
-        />
-      ))}
-      {forums.map((forum, index) => (
-        <ForumElement
-          key={index}
-          id={forum.id}
-          votes={forum.votes}
-          desc={forum.desc}
-          comments={forum.comments}
         />
       ))}
     </div>
