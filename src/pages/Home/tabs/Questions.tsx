@@ -5,6 +5,7 @@ import { ForumElement } from "../../../components/ForumElem";
 export default function QuestionsPage() {
   const [questions, setQuestions] = useState([
     {
+      id: "dsddsd",
       title: "dfdf dfdf dfdfd fd f df df d fdfdfdfd fdfdfdf",
       votes: 12,
       tags: ["node.js", "mongodb"],
@@ -12,6 +13,7 @@ export default function QuestionsPage() {
       comments: 10,
     },
     {
+      id: "weeewewew",
       title: "dfdf dfdfd fdfdfdf dfdfdfdf df",
       votes: 8,
       tags: ["react", "hooks"],
@@ -24,6 +26,7 @@ export default function QuestionsPage() {
       <div className="h-10"></div>
       {questions.map((question, index) => (
         <QuestionBox
+          id={question.id}
           key={index}
           title={question.title}
           votes={question.votes}

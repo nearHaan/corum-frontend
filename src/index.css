@@ -15,16 +15,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-
-a:hover {
-  color: #535bf2;
-}
-
 body {
   margin: 0;
   display: flex;
@@ -64,13 +54,13 @@ button:focus-visible {
 
 @layer utilities {
   input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0px 1000px theme('colors.white') inset !important;
-    -webkit-text-fill-color: theme('colors.black') !important;
+    -webkit-box-shadow: 0 0 0px 1000px theme("colors.white") inset !important;
+    -webkit-text-fill-color: theme("colors.black") !important;
   }
 
   input:-webkit-autofill:focus {
-    -webkit-box-shadow: 0 0 0px 1000px theme('colors.gray.100') inset !important;
-    -webkit-text-fill-color: theme('colors.black') !important;
+    -webkit-box-shadow: 0 0 0px 1000px theme("colors.gray.100") inset !important;
+    -webkit-text-fill-color: theme("colors.black") !important;
   }
 }
 
@@ -78,10 +68,6 @@ button:focus-visible {
   :root {
     color: #213547;
     background-color: #ffffff;
-  }
-
-  a:hover {
-    color: #747bff;
   }
 
   button {

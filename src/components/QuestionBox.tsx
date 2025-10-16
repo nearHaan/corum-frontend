@@ -1,4 +1,5 @@
 type QuestionBoxProps = {
+  id: string;
   title: string;
   votes: number;
   tags: string[];
@@ -7,6 +8,7 @@ type QuestionBoxProps = {
 };
 
 export const QuestionBox: React.FC<QuestionBoxProps> = ({
+  id,
   title,
   votes,
   tags,
@@ -20,7 +22,9 @@ export const QuestionBox: React.FC<QuestionBoxProps> = ({
         <p className="text-xs w-full text-center">Votes</p>
       </div>
       <div>
-        <h2 className="text-2xl mb-5">{title}</h2>
+        <a className="text-black text-2xl mb-5" href={`/question/${id}`}>
+          {title}
+        </a>
         <div className="grid mb-5 grid-cols-2 gap-2 w-fit">
           {tags.map((item) => (
             <p className="text-gray-500 mx-1 text-sm rounded-full py-1 px-2 bg-gray-100 w-fit">
