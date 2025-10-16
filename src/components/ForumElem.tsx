@@ -32,8 +32,12 @@ export const ForumElement: React.FC<ForumElementProps> = ({
         </div>
       </div>
       <div className="p-5">
-        <div className="ring-1 ring-[#00000020] rounded-xl p-2 mb-3">
-          <input type="text" placeholder="Add a Comment" />
+        <div className="ring-1 ring-[#00000020] rounded-xl mb-3">
+          <input
+            className="h-full w-full text-md p-2"
+            type="text"
+            placeholder="Add a Comment"
+          />
         </div>
         <div className="w-full flex flex-col gap-y-2">
           {comments.map((comment, index) => (
