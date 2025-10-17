@@ -6,7 +6,7 @@ import { useState } from "react";
 
 export default function HomePage() {
   const [activeTab, setActiveTab] = useState("Questions");
-  const myrooms = ["project-group", "hobby-project"];
+  // const myrooms = ["project-group", "hobby-project"];
   const quickTags = ["node.js", "python", "C++", "C++", "C++", "C++"];
   return (
     <div className="min-h-screen w-screen overflow-x-hidden flex flex-col items-center justify-center text-black">
@@ -28,7 +28,7 @@ export default function HomePage() {
         </div>
       </header>
       <main className="w-full min-h-screen h-full flex items-start justify-center">
-        <div className="w-100 h-full shadow-[2px_0px_#00000020] flex flex-col">
+        <div className="w-80 h-full shadow-[2px_0px_#00000020] flex flex-col">
           <div className="p-5 gap-y-2 flex flex-col items-center">
             <SideBarButton
               isActive={activeTab === "Questions"}
@@ -55,7 +55,7 @@ export default function HomePage() {
           </div> */}
         </div>
         <Outlet />
-        <div className="w-100 h-full shadow-[-2px_0px_#00000020] flex flex-col">
+        <div className="max-lg:hidden w-80 h-full shadow-[-2px_0px_#00000020] flex flex-col">
           <div className="p-5 w-full gap-y-2 flex flex-col">
             <p className="text-lg mb-3">Inbox</p>
             <div className="flex flex-col rounded-lg bg-gray-100 p-2">
