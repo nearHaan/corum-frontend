@@ -27,8 +27,8 @@ export default function HomePage() {
           <div className="w-10 h-10 rounded-full bg-gray-400"></div>
         </div>
       </header>
-      <main className="w-full h-full flex items-start justify-center">
-        <div className="w-80 h-screen shadow-[2px_0px_#00000020] flex flex-col">
+      <main className="w-full min-h-screen h-full flex items-start justify-center">
+        <div className="w-100 h-full shadow-[2px_0px_#00000020] flex flex-col">
           <div className="p-5 gap-y-2 flex flex-col items-center">
             <SideBarButton
               isActive={activeTab === "Questions"}
@@ -45,17 +45,17 @@ export default function HomePage() {
               icon={ArrowRightFromLineIcon}
             />
           </div>
-          <div className="p-5">
+          {/* <div className="p-5">
             <p className="text-lg mb-3">My Rooms</p>
             <div className="flex flex-col">
               {myrooms.map((item) => (
                 <p className="text-gray-500">{item}</p>
               ))}
             </div>
-          </div>
+          </div> */}
         </div>
         <Outlet />
-        <div className="w-80 h-screen shadow-[-2px_0px_#00000020] flex flex-col">
+        <div className="w-100 h-full shadow-[-2px_0px_#00000020] flex flex-col">
           <div className="p-5 w-full gap-y-2 flex flex-col">
             <p className="text-lg mb-3">Inbox</p>
             <div className="flex flex-col rounded-lg bg-gray-100 p-2">
