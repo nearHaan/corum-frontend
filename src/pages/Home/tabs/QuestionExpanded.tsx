@@ -8,7 +8,7 @@ export default function QuestionExpandedPage() {
     {
       id: "sdsd",
       votes: 12,
-      desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus voluptate iste quo sapiente repudiandae ea nemo enim nulla magni et, autem odio eligendi incidunt ipsa? Quo quas dicta facere fugit!",
+      desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus voluptate iste quo sapiente repudiandae ea nemo enim nulla magni et, autem odio eligendi incidunt ipsa? Quo quas dicta facere fugit! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus voluptate iste quo sapiente repudiandae ea nemo enim nulla magni et, autem odio eligendi incidunt ipsa? Quo quas dicta facere fugit! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus voluptate iste quo sapiente repudiandae ea nemo enim nulla magni et, autem odio eligendi incidunt ipsa? Quo quas dicta facere fugit! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus voluptate iste quo sapiente repudiandae ea nemo enim nulla magni et, autem odio eligendi incidunt ipsa? Quo quas dicta facere fugit!",
       comments: [
         {
           id: "ddffd",
@@ -33,7 +33,7 @@ export default function QuestionExpandedPage() {
     },
   ]);
   return (
-    <div className="w-full h-full flex flex-col p-2 items-center justify-center">
+    <div className="w-full min-h-screen flex flex-col p-2 items-center justify-center">
       <div className="flex flex-col w-full mb-3 p-3">
         <h1 className="text-2xl text-black">{questionId}</h1>
         <p className="text-sm mt-2">Asked on 1212112</p>

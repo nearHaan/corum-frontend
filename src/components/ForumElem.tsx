@@ -1,3 +1,5 @@
+import { ThumbsDownIcon, ThumbsUpIcon } from "lucide-react";
+
 type CommentsObject = {
   id: string;
   username: string;
@@ -18,12 +20,53 @@ export const ForumElement: React.FC<ForumElementProps> = ({
   desc,
   comments,
 }) => {
+  async function onUpVote() {
+    try {
+      const response = await fetch(`http://localhost:3000/${id}/upvote`, {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+      });
+
+      if (!response || response.status !== 200) {
+        throw new Error("Something went wrong");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  async function onDownVote() {
+    try {
+      const response = await fetch(`http://localhost:3000/${id}/downvote`, {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+      });
+
+      if (!response || response.status !== 200) {
+        throw new Error("Something went wrong");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
   return (
-    <div className="w-full h-min ring-1 ring-[#00000020] mb-2 rounded-xl flex flex-col">
+    <div className="w-full ring-1 ring-[#00000020] mb-2 rounded-xl flex flex-col">
       <div className="w-full flex items-center gap-x-2">
-        <div className="felx items-center justify-center flex-col py-10 px-8">
-          <p className="text-4xl">{votes.toString()}</p>
-          <p className="text-xs w-full text-center">Votes</p>
+        <div className="h-full flex items-center justify-start flex-col py-10 px-8">
+          <div className="flex flex-col items-center justify-center">
+            <button onClick={onUpVote}>
+              <ThumbsUpIcon size={20} />
+            </button>
+            <p className="text-4xl">{votes.toString()}</p>
+            <p className="text-xs w-full text-center">Votes</p>
+            <button onClick={onDownVote}>
+              <ThumbsDownIcon size={20} />
+            </button>
+          </div>
         </div>
         {/* <div className="h-20 w-0.5 bg-neutral-100"></div> */}
         <div className="w-full h-full p-5">
