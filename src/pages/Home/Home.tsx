@@ -2,8 +2,10 @@ import { Outlet } from "react-router-dom";
 import { Button } from "../../components/Button";
 import { ArrowRightFromLineIcon, CircleQuestionMark } from "lucide-react";
 import SideBarButton from "../../components/sidebar_btn";
+import { useState } from "react";
 
 export default function HomePage() {
+  const [activeTab, setActiveTab] = useState("Questions");
   const myrooms = ["project-group", "hobby-project"];
   const quickTags = ["node.js", "python", "C++", "C++", "C++", "C++"];
   return (
@@ -29,13 +31,17 @@ export default function HomePage() {
         <div className="w-80 h-screen shadow-[2px_0px_#00000020] flex flex-col">
           <div className="p-5 gap-y-2 flex flex-col items-center">
             <SideBarButton
-              isActive={true}
+              isActive={activeTab === "Questions"}
+              onClick={setActiveTab}
               title="Questions"
+              toLink="/"
               icon={CircleQuestionMark}
             />
             <SideBarButton
-              isActive={false}
+              isActive={activeTab === "Public Rooms"}
+              onClick={setActiveTab}
               title="Public Rooms"
+              toLink="/rooms"
               icon={ArrowRightFromLineIcon}
             />
           </div>
