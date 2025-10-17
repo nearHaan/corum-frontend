@@ -32,6 +32,50 @@ export default function QuestionExpandedPage() {
       ],
     },
   ]);
+  async function onUpVote(id: string) {
+    setForums((forums) =>
+      forums.map((forum) =>
+        forum.id === id ? { ...forum, votes: forum.votes + 1 } : forum
+      )
+    );
+    try {
+      const response = await fetch(`http://localhost:3000/${id}/upvote`, {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+      });
+
+      if (!response || response.status !== 200) {
+        throw new Error("Something went wrong");
+      }
+    } catch (err) {
+      console.log(err);
+      setForums((forums) =>
+        forums.map((forum) =>
+          forum.id === id ? { ...forum, votes: forum.votes - 1 } : forum
+        )
+      );
+    }
+  }
+
+  async function onDownVote(id: string) {
+    try {
+      const response = await fetch(`http://localhost:3000/${id}/downvote`, {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+      });
+
+      if (!response || response.status !== 200) {
+        throw new Error("Something went wrong");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   return (
     <div className="w-full min-h-screen flex flex-col p-2 items-center justify-center">
       <div className="flex flex-col w-full mb-3 p-3">
@@ -45,6 +89,8 @@ export default function QuestionExpandedPage() {
           votes={forum.votes}
           desc={forum.desc}
           comments={forum.comments}
+          onUpVote={onUpVote}
+          onDownVote={onDownVote}
         />
       ))}
     </div>
