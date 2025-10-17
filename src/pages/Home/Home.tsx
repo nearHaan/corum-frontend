@@ -38,9 +38,9 @@ export default function HomePage() {
               icon={CircleQuestionMark}
             />
             <SideBarButton
-              isActive={activeTab === "Public Rooms"}
+              isActive={activeTab === "Rooms"}
               onClick={setActiveTab}
-              title="Public Rooms"
+              title="Rooms"
               toLink="/rooms"
               icon={ArrowRightFromLineIcon}
             />
