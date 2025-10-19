@@ -243,7 +243,7 @@ export default function QuestionExpandedPage() {
         onUpVote={onUpVote}
         onDownVote={onDownVote}
       />
-      {forums.map((forum, index) => (
+      {forums.map((forum) => (
         <ForumElement
           key={forum._id}
           isAnswer={true}
