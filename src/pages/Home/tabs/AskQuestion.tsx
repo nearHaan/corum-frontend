@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TagButton } from "../../../components/TagButton";
 import { useNavigate } from "react-router-dom";
 
@@ -8,10 +8,26 @@ export default function AskQuestion() {
     name: string;
   };
   const [tags, setTags] = useState<Array<tagType>>([]);
-  let selectedTags: Array<string> = [];
+  const [selectedTags, setSelectedTags] = useState<Array<string>>([]);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    fetch("http://localhost:5000/questions/tags")
+      .then((res) => res.json())
+      .then((data) => {
+        setTags(data.map((t: any) => ({ id: t._id, name: t.tagName })));
+      })
+      .catch(console.error);
+  }, []);
+
+  const toggleTag = (id: string) => {
+    setSelectedTags((prev) =>
+      prev.includes(id) ? prev.filter((tagId) => tagId !== id) : [...prev, id]
+    );
+  };
+
   return (
     <div className="flex-1 h-full flex flex-col justify-center p-5">
       <h2 className="text-2xl">Ask a Question</h2>
@@ -32,7 +48,13 @@ export default function AskQuestion() {
         <p className="mt-2 text-sm">Tags</p>
         <div className="mt-1 p-3 rounded border-1 border-neutral-400 flex flex-wrap gap-2">
           {tags.map((tag) => (
-            <TagButton key={tag.id} id={tag.id} name={tag.name} />
+            <TagButton
+              key={tag.id}
+              id={tag.id}
+              name={tag.name}
+              selected={selectedTags.includes(tag.id)}
+              toggle={() => toggleTag(tag.id)}
+            />
           ))}
         </div>
         <button
@@ -63,7 +85,7 @@ export default function AskQuestion() {
               console.error(error);
               alert("Error: Unable to post question");
             } finally {
-              navigate("/"); // navigate back to home in both cases
+              navigate("/");
             }
           }}
           className="mt-10 text-sm text-white bg-[#147324]"

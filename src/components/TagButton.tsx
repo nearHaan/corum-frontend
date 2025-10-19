@@ -1,24 +1,29 @@
 import { X } from "lucide-react";
-import { useState } from "react";
 
 type TagButtonProps = {
   id: string;
   name: string;
+  selected: boolean;
+  toggle: () => void;
 };
 
-export const TagButton: React.FC<TagButtonProps> = ({ id, name }) => {
-  const [status, setStatus] = useState(false);
+export const TagButton: React.FC<TagButtonProps> = ({
+  id,
+  name,
+  selected,
+  toggle,
+}) => {
   return (
     <div
-      onClick={() => setStatus(!status)}
-      className={`w-min px-4 py-2 ${
-        !status ? "bg-neutral-100" : "bg-green-100"
+      onClick={toggle}
+      className={`w-fit px-4 py-2 ${
+        !selected ? "bg-neutral-100" : "bg-green-100"
       } rounded-full flex gap-x-1 items-center cursor-pointer`}
     >
-      <p className={`${!status ? "text-neutral-400" : "text-black"} text-sm`}>
+      <p className={`${!selected ? "text-neutral-400" : "text-black"} text-sm`}>
         {name}
       </p>
-      {status && <X size={15} color="black" />}
+      {selected && <X size={15} color="black" />}
     </div>
   );
 };

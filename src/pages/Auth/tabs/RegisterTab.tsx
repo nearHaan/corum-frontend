@@ -28,10 +28,26 @@ export default function RegisterTab() {
     setLoading(true);
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      const response = await fetch("http://localhost:5000/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          username: values.name,
+          email: values.email,
+          password: values.password,
+        }),
+      });
+      if (!response || response.status !== 200) {
+        throw new Error("Invalid credentials");
+      }
+      const data = await response.json();
+      console.log(data);
+      localStorage.setItem("token", data.token);
       navigate("/");
     } catch (error) {
-      alert("Login failed. Please try again.");
+      alert("Registeration failed. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -80,7 +96,7 @@ export default function RegisterTab() {
         <Input
           label="Confirm Password"
           type="password"
-          name="password"
+          name="confirmPassword"
           value={values.confirmPassword}
           onChange={handleChange}
           error={

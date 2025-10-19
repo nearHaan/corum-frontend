@@ -1,13 +1,89 @@
-import { Outlet } from "react-router-dom";
-import { Button } from "../../components/Button";
-import { ArrowRightFromLineIcon, CircleQuestionMark } from "lucide-react";
+import { Outlet, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 import SideBarButton from "../../components/sidebar_btn";
-import { useState } from "react";
+import { TagButton } from "../../components/TagButton";
+import { CircleQuestionMark, ArrowRightFromLineIcon } from "lucide-react";
+import { useQuestionContext } from "../../contexts/QuestionContext";
+
+type TagType = {
+  id: string;
+  name: string;
+};
 
 export default function HomePage() {
+  const { selectedTags, setSelectedTags, setQuestions } = useQuestionContext();
+  const [quickTags, setQuickTags] = useState<TagType[]>([]);
+  const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("Questions");
-  // const myrooms = ["project-group", "hobby-project"];
-  const quickTags = ["node.js", "python", "C++", "C++", "C++", "C++"];
+  const location = useLocation();
+
+  useEffect(() => {
+    const fetchTags = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/questions/tags");
+        const data = await response.json();
+        setQuickTags(data.map((t: any) => ({ id: t._id, name: t.tagName })));
+      } catch (err) {
+        console.error("Error fetching tags:", err);
+      }
+    };
+    fetchTags();
+  }, []);
+
+  useEffect(() => {
+    fetchQuestions([]);
+  }, []);
+
+  const fetchQuestions = async (tags: string[]) => {
+    setLoading(true);
+    try {
+      let response;
+      if (!tags.length) {
+        response = await fetch("http://localhost:5000/questions");
+      } else {
+        response = await fetch("http://localhost:5000/questions/filter", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ tags }),
+        });
+      }
+
+      const data = await response.json();
+      const formattedQuestions = (data.questions || data).map((q: any) => ({
+        id: q._id,
+        title: q.title,
+        votes: q.votes,
+        tags: q.tags.map((t: any) => ({ id: t._id, name: t.tagName })),
+        views: q.views || 0,
+        comments: q.comments?.length || 0,
+      }));
+
+      setQuestions(formattedQuestions);
+    } catch (err) {
+      console.error("Error fetching questions:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const toggleTag = (id: string) => {
+    const newSelectedTags = selectedTags.includes(id)
+      ? selectedTags.filter((tagId) => tagId !== id)
+      : [...selectedTags, id];
+
+    setSelectedTags(newSelectedTags);
+
+    setQuickTags((prev) =>
+      [...prev].sort((a, b) => {
+        const aSelected = newSelectedTags.includes(a.id) ? 0 : 1;
+        const bSelected = newSelectedTags.includes(b.id) ? 0 : 1;
+        return aSelected - bSelected;
+      })
+    );
+
+    fetchQuestions(newSelectedTags);
+  };
+
   return (
     <div className="min-h-screen w-screen overflow-x-hidden flex flex-col items-center justify-center text-black">
       <header className="relative sticky top-0 w-full flex items-center justify-between shadow-[0px_2px_#00000020] z-30 px-5">
@@ -48,35 +124,24 @@ export default function HomePage() {
               icon={ArrowRightFromLineIcon}
             />
           </div>
-          {/* <div className="p-5">
-            <p className="text-lg mb-3">My Rooms</p>
-            <div className="flex flex-col">
-              {myrooms.map((item) => (
-                <p className="text-gray-500">{item}</p>
-              ))}
+          {location.pathname === "/" && (
+            <div className="p-5">
+              <p className="text-lg mb-3">Quick Tags</p>
+              <div className="flex flex-wrap gap-2">
+                {quickTags.map((tag) => (
+                  <TagButton
+                    key={tag.id}
+                    id={tag.id}
+                    name={tag.name}
+                    selected={selectedTags.includes(tag.id)}
+                    toggle={() => toggleTag(tag.id)}
+                  />
+                ))}
+              </div>
             </div>
-          </div> */}
+          )}
         </div>
         <Outlet />
-        <div className="max-lg:hidden w-80 h-full shadow-[-2px_0px_#00000020] flex flex-col">
-          <div className="p-5 w-full gap-y-2 flex flex-col">
-            <p className="text-lg mb-3">Inbox</p>
-            <div className="flex flex-col rounded-lg bg-gray-100 p-2">
-              <p className="text-gray-400 text-xs mb-1">New Answer</p>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-            </div>
-          </div>
-          <div className="p-5">
-            <p className="text-lg mb-3">Quich Tags</p>
-            <div className="grid grid-cols-2 gap-2 w-fit">
-              {quickTags.map((item) => (
-                <p className="text-gray-500 mx-1 text-sm rounded-full py-1 px-2 bg-gray-100 w-fit">
-                  {item}
-                </p>
-              ))}
-            </div>
-          </div>
-        </div>
       </main>
     </div>
   );
