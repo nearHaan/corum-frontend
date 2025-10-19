@@ -6,6 +6,7 @@ import PublicRoomsPage from "./pages/Home/tabs/PublicRooms";
 import LoginTab from "./pages/Auth/tabs/LoginTab";
 import RegisterTab from "./pages/Auth/tabs/RegisterTab";
 import QuestionExpandedPage from "./pages/Home/tabs/QuestionExpanded";
+import AskQuestion from "./pages/Home/tabs/AskQuestion";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/" element={<HomePage />}>
           <Route index element={<QuestionsPage />} />
           <Route path="rooms" element={<PublicRoomsPage />} />
+          <Route path="new-question" element={<AskQuestion />} />
           <Route
             path="question/:questionId"
             element={<QuestionExpandedPage />}
