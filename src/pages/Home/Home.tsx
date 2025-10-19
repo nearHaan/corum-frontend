@@ -21,9 +21,12 @@ export default function HomePage() {
           />
         </div>
         <div className="flex items-center justify-center gap-x-2">
-          <Button type="submit" loading={false}>
-            Ask a question
-          </Button>
+          <a
+            href="/new-question"
+            className="h-10 px-4 py-1 bg-[#147324] text-white text-sm rounded-md flex items-center"
+          >
+            Ask a Question
+          </a>
           <div className="w-10 h-10 rounded-full bg-gray-400"></div>
         </div>
       </header>
