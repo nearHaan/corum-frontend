@@ -13,7 +13,7 @@ type TagType = {
 export default function HomePage() {
   const { selectedTags, setSelectedTags, setQuestions } = useQuestionContext();
   const [quickTags, setQuickTags] = useState<TagType[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("Questions");
   const location = useLocation();
 

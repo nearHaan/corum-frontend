@@ -117,7 +117,7 @@ export const ForumElement: React.FC<ForumElementProps> = ({
           )}
         </div>
         <div className="w-full flex flex-col gap-y-2">
-          {comments.map((comment, index) => (
+          {comments.map((comment) => (
             <div
               key={comment._id}
               className="flex items-center gap-x-2 bg-gray-100 p-2 rounded-md w-full"

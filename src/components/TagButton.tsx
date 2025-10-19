@@ -8,7 +8,6 @@ type TagButtonProps = {
 };
 
 export const TagButton: React.FC<TagButtonProps> = ({
-  id,
   name,
   selected,
   toggle,
