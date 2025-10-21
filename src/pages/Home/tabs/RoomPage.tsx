@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { RoomTextArea } from "../../../components/RoomTextArea";
 import io from "socket.io-client";
 import { Plus } from "lucide-react";
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 type TextAreaType = {
   title: string;
