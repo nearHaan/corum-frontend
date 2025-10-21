@@ -29,7 +29,7 @@ export default function AskQuestion() {
   };
 
   return (
-    <div className="flex-1 h-full flex flex-col justify-center p-5">
+    <div className="flex-1 h-full flex flex-col justify-start items-start p-5">
       <h2 className="text-2xl">Ask a Question</h2>
       <div>
         <p className="mt-2 text-sm">Title</p>
