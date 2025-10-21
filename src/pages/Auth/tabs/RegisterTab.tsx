@@ -53,7 +53,7 @@ export default function RegisterTab() {
     }
   };
   return (
-    <div className="h-full w-full flex flex-col items-start p-10 text-black">
+    <div className="h-full w-full flex flex-col items-start justify-center p-10 text-black">
       <h3 className="">CORUM</h3>
       <h1 className="mt-10">New User</h1>
       <p className="mb-10 text-[#8E8E8E]">Please enter your details</p>
@@ -116,7 +116,7 @@ export default function RegisterTab() {
         </Button>
         <div className="text-sm">
           Already have an account?{" "}
-          <a className="text-blue-200" href="/auth">
+          <a className="text-blue-400" href="/auth">
             Login here
           </a>
         </div>

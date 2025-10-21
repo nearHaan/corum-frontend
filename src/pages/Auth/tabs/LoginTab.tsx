@@ -47,7 +47,7 @@ export default function LoginTab() {
     }
   };
   return (
-    <div className="h-full w-full flex flex-col items-start p-10 text-black">
+    <div className="h-full w-full flex flex-col items-start justify-center p-10 text-black">
       <h3 className="">CORUM</h3>
       <h1 className="mt-10">
         Hello,
@@ -81,14 +81,7 @@ export default function LoginTab() {
           autoComplete="current-password"
           className=""
         />
-        <div className="w-full flex items-center justify-between py-2">
-          <label className="flex items-center cursor-pointer">
-            <input
-              type="checkbox"
-              className="w-4 h-4 bg-black rounded focus:ring-blue-500"
-            />
-            <span className="ml-2 text-sm text-black">Remember me</span>
-          </label>
+        <div className="w-full flex items-center justify-end py-2">
           <a className="text-sm text-[#8e8e8e] hover:text-black transition-colors cursor-pointer">
             Forgot password?
           </a>
@@ -102,7 +95,7 @@ export default function LoginTab() {
         </Button>
         <div className="text-sm">
           Don't have an account?{" "}
-          <a className="text-blue-200" href="/auth/register">
+          <a className="text-blue-400" href="/auth/register">
             Register here
           </a>
         </div>

@@ -36,8 +36,8 @@ export const ForumElement: React.FC<ForumElementProps> = ({
   const [comment, setComment] = useState("");
   const [sendVisible, setSendVisible] = useState(false);
   return (
-    <div className="w-full ring-1 ring-[#00000020] mb-2 rounded-xl flex flex-col">
-      <div className="w-full flex items-center gap-x-2">
+    <div className="w-full h-min ring-1 ring-[#00000020] mb-2 rounded-xl flex flex-col">
+      <div className="w-full flex items-start gap-x-2">
         <div className="h-full flex items-center justify-start flex-col py-10 px-8">
           <div className="flex flex-col items-center justify-center">
             <button
@@ -58,14 +58,14 @@ export const ForumElement: React.FC<ForumElementProps> = ({
             </button>
           </div>
         </div>
-        {/* <div className="h-20 w-0.5 bg-neutral-100"></div> */}
-        <div className="w-full h-full p-5">
+        <div className="h-full w-0.5 bg-neutral-100"></div>
+        <div className="w-full h-full p-5 flex items-start">
           <p className="text-sm mb-5">{desc}</p>
           <div className="flex gap-x-5"></div>
         </div>
       </div>
       <div className="p-5">
-        <div className="flex items-center ring-1 ring-[#00000020] rounded-xl mb-3">
+        <div className="flex items-center ring-1 ring-[#00000020] rounded-md mb-3">
           <input
             value={comment}
             onChange={(e) => {
@@ -120,7 +120,7 @@ export const ForumElement: React.FC<ForumElementProps> = ({
           {comments.map((comment) => (
             <div
               key={comment._id}
-              className="flex items-center gap-x-2 bg-gray-100 p-2 rounded-md w-full"
+              className="flex items-center gap-x-2 bg-neutral-100 p-2 rounded-md w-full"
             >
               <div className="w-8 h-8 rounded-full bg-gray-500"></div>
               <div className="mr-5">

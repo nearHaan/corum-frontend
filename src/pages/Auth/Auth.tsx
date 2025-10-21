@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 
 export default function AuthPage() {
   return (
-    <div className="w-screen min-h-screen flex items-center justify-center font-mono">
+    <div className="w-screen h-screen flex items-center justify-center">
       <div className="max-illusBreak:hidden h-screen w-full border-r-1 border-[#8e8e8e] flex flex-col items-center justify-center">
         <img
           className="max-w-sm"
