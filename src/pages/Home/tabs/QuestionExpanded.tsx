@@ -282,8 +282,6 @@ export default function QuestionExpandedPage() {
                 }),
               });
 
-              const data = await response.json();
-
               if (response.ok) {
                 alert("Answer posted successfully!");
               } else {
