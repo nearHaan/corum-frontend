@@ -13,7 +13,7 @@ export default function QuestionsPage() {
   }
 
   return (
-    <div className="flex-1 h-full flex flex-col p-2 items-center justify-center">
+    <div className="flex-1 h-full flex flex-col p-2 items-center justify-start">
       <div className="h-10"></div>
       {questions.map((q: any) => (
         <QuestionBox
