@@ -20,7 +20,6 @@ export const QuestionBox: React.FC<QuestionBoxProps> = ({
   views,
   comments,
 }) => {
-  console.log(tags);
   return (
     <div className="py-1 w-full ring-1 ring-[#00000020] mb-2 rounded-xl flex items-center gap-x-2">
       <div className="flex items-center justify-center flex-col py-10 px-8">

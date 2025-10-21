@@ -80,6 +80,7 @@ export default function AskQuestion() {
                 alert("Question posted successfully!");
               } else {
                 alert(`Error: ${data.error || "Something went wrong"}`);
+                navigate("/auth");
               }
             } catch (error) {
               console.error(error);

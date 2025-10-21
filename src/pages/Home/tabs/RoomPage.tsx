@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { RoomTextArea } from "../../../components/RoomTextArea";
 import io from "socket.io-client";
 import { Plus } from "lucide-react";
+import { redirect, useNavigate } from "react-router-dom";
 
 type TextAreaType = {
   title: string;
@@ -20,6 +21,7 @@ const socket = io("http://localhost:5000");
 export default function RoomsPage() {
   const [rooms, setRooms] = useState<RoomType[]>([]);
   const [selectedRoom, setSelectedRoom] = useState<RoomType | null>(null);
+  const navigator = useNavigate();
 
   useEffect(() => {
     const fetchRooms = async () => {
@@ -29,6 +31,9 @@ export default function RoomsPage() {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         });
+        if (res.status === 403) {
+          navigator("/auth");
+        }
         const data = await res.json();
         setRooms(data.rooms || data);
       } catch (err) {

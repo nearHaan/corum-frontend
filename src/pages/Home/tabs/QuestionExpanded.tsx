@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ForumElement } from "../../../components/ForumElem";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 type Tag = {
   _id: string;
@@ -55,6 +55,7 @@ export default function QuestionExpandedPage() {
   const [forums, setForums] = useState<Array<Answer>>([]);
   const [loading, setLoading] = useState(true);
   const [viewed, setViewed] = useState(false);
+  const navigate = useNavigate();
 
   async function onUpVote(id: string, isAnswer: boolean = false) {
     if (isAnswer) {
@@ -154,6 +155,10 @@ export default function QuestionExpandedPage() {
           },
         }
       );
+
+      if (response.status === 403) {
+        navigate("/auth");
+      }
 
       if (!response || response.status !== 200) {
         throw new Error("Something went wrong");
@@ -282,7 +287,9 @@ export default function QuestionExpandedPage() {
               if (response.ok) {
                 alert("Answer posted successfully!");
               } else {
-                alert(`Error: ${data.error || "Something went wrong"}`);
+                if (response.status === 403) {
+                  navigate("/auth");
+                }
               }
             } catch (error) {
               console.error(error);
