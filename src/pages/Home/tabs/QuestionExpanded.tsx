@@ -232,7 +232,7 @@ export default function QuestionExpandedPage() {
   }
 
   return (
-    <div className="w-full min-h-screen flex flex-col p-2 items-center justify-center">
+    <div className="w-full h-full flex flex-col p-2 items-center justify-start">
       <div className="flex flex-col w-full mb-3 p-3">
         <h1 className="text-2xl text-black">{question?.title}</h1>
         <p className="text-sm mt-2">
