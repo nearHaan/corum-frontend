@@ -39,17 +39,30 @@ export default function HomePage() {
     try {
       let response;
       if (!tags.length) {
-        response = await fetch("http://localhost:5000/questions");
+        response = await fetch("http://localhost:5000/questions", {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
       } else {
         response = await fetch("http://localhost:5000/questions/filter", {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
           body: JSON.stringify({ tags }),
         });
       }
 
       const data = await response.json();
-      const formattedQuestions = (data.questions || data).map((q: any) => ({
+      console.log(data);
+      if (data.username) {
+        console.log("Logged in");
+      } else {
+        console.log("Logged out");
+      }
+      const formattedQuestions = data.questions.map((q: any) => ({
         id: q._id,
         title: q.title,
         votes: q.votes,

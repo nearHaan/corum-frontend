@@ -14,7 +14,6 @@ function App() {
     <QuestionProvider>
       <BrowserRouter>
         <Routes>
-          {/* <Route path="/login" element={<Login />} /> */}
           <Route path="/auth" element={<AuthPage />}>
             <Route index element={<LoginTab />} />
             <Route path="register" element={<RegisterTab />} />
