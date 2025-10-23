@@ -72,9 +72,9 @@ export default function HomePage() {
         votes: q.votes,
         tags: q.tags.map((t: any) => ({ id: t._id, name: t.tagName })),
         views: q.views || 0,
-        comments: q.comments?.length || 0,
+        comments: q.comments,
       }));
-
+      console.log(formattedQuestions);
       setQuestions(formattedQuestions);
     } catch (err) {
       console.error("Error fetching questions:", err);
@@ -142,7 +142,7 @@ export default function HomePage() {
           >
             {!loggedIn ? "Login" : "Logout"}
           </button>
-          <div className="w-10 h-10 rounded-full bg-gray-400"></div>
+          {/* <div className="w-10 h-10 rounded-full bg-gray-400"></div> */}
         </div>
       </header>
       <main className="w-full h-full flex items-start justify-center">

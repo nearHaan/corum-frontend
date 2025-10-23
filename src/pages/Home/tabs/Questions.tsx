@@ -23,7 +23,7 @@ export default function QuestionsPage() {
           votes={q.votes.upvotes}
           tags={q.tags}
           views={q.views || 0}
-          comments={q.comments?.length || 0}
+          comments={q.comments}
         />
       ))}
     </div>
