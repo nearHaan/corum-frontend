@@ -39,14 +39,16 @@ export default function RegisterTab() {
           password: values.password,
         }),
       });
-      if (!response || response.status !== 200) {
-        throw new Error("Invalid credentials");
+      if (!response || response.status !== 201) {
+        console.log(response);
+        throw new Error("Something went wrong");
       }
       const data = await response.json();
       console.log(data);
       localStorage.setItem("token", data.token);
       navigate("/");
     } catch (error) {
+      console.log(error);
       alert("Registeration failed. Please try again.");
     } finally {
       setLoading(false);
