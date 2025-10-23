@@ -34,7 +34,7 @@ export default function HomePage() {
 
   useEffect(() => {
     fetchQuestions([]);
-  });
+  }, []);
 
   const fetchQuestions = async (tags: string[]) => {
     setLoading(true);
