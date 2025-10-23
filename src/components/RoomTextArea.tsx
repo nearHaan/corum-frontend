@@ -16,9 +16,10 @@ export const RoomTextArea: React.FC<RoomTextAreaProps> = ({
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
-    if (textareaRef.current) {
-      textareaRef.current.style.height = "auto";
-      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+    const textarea = textareaRef.current;
+    if (textarea) {
+      textarea.style.height = "auto"; // reset
+      textarea.style.height = `${textarea.scrollHeight}px`; // set to content height
     }
   }, [text]);
 
@@ -27,11 +28,11 @@ export const RoomTextArea: React.FC<RoomTextAreaProps> = ({
   }, [body]);
 
   return (
-    <div className="w-full bg-neutral-100 rounded-xl overflow-hidden flex flex-col justify-start">
+    <div className="w-full bg-neutral-100 rounded-xl flex flex-col justify-start overflow-visible">
       <p className="p-2 font-bold text-sm mb-2">{title}</p>
       <textarea
         ref={textareaRef}
-        className="px-2 w-full resize-none overflow-hidden"
+        className="px-2 w-full resize-none overflow-hidden focus:outline-none"
         onKeyDown={(e) => {
           if (e.key === "Tab") {
             e.preventDefault();
