@@ -60,7 +60,7 @@ export const ForumElement: React.FC<ForumElementProps> = ({
         </div>
         <div className="h-full w-0.5 bg-neutral-100"></div>
         <div className="w-full h-full p-5 flex items-start">
-          <p className="text-sm mb-5">{desc}</p>
+          <p className="text-sm mb-5 whitespace-pre-line">{desc}</p>
           <div className="flex gap-x-5"></div>
         </div>
       </div>
