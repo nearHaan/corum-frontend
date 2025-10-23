@@ -201,7 +201,6 @@ export default function RoomsPage() {
 
   return (
     <div className="flex-1 h-full flex">
-      {/* Sidebar: Room List */}
       <div className="w-64 border-r border-gray-300 p-3 flex flex-col gap-2 overflow-y-auto">
         <div className="flex items-center w-full gap-x-2">
           <button
@@ -231,7 +230,6 @@ export default function RoomsPage() {
         ))}
       </div>
 
-      {/* Main Panel: Text Areas */}
       <div className="flex-1 p-3 flex flex-col gap-4 overflow-y-auto">
         {selectedRoom && (
           <>
