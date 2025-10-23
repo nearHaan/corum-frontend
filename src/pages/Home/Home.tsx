@@ -17,6 +17,8 @@ export default function HomePage() {
   const [activeTab, setActiveTab] = useState("Questions");
   const location = useLocation();
   const [loggedIn, setLoggedIn] = useState(false);
+  const [allQuestions, setAllQuestions] = useState<any[]>([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -74,7 +76,7 @@ export default function HomePage() {
         views: q.views || 0,
         comments: q.comments,
       }));
-      console.log(formattedQuestions);
+      setAllQuestions(formattedQuestions);
       setQuestions(formattedQuestions);
     } catch (err) {
       console.error("Error fetching questions:", err);
@@ -82,6 +84,17 @@ export default function HomePage() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (searchTerm.trim() === "") {
+      setQuestions(allQuestions);
+    } else {
+      const filtered = allQuestions.filter((q) =>
+        q.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setQuestions(filtered);
+    }
+  }, [searchTerm, allQuestions, setQuestions]);
 
   const handleAskQuestion = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -127,7 +140,13 @@ export default function HomePage() {
       <header className="relative top-0 sticky w-full flex items-center justify-between shadow-[0px_2px_#00000020] bg-white z-30 px-5">
         <h2 className="text-2xl my-2">CORUM</h2>
         <div className="flex-1 max-w-md rounded-lg my-2 mx-5 ring-1 ring-[#00000020]">
-          <input className="p-2 w-full" type="text" placeholder="Search" />
+          <input
+            className="p-2 w-full"
+            type="text"
+            placeholder="Search"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
         </div>
         <div className="flex items-center justify-center gap-x-2">
           <button
