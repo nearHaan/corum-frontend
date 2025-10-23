@@ -34,7 +34,7 @@ export default function HomePage() {
 
   useEffect(() => {
     fetchQuestions([]);
-  }, []);
+  });
 
   const fetchQuestions = async (tags: string[]) => {
     setLoading(true);
@@ -92,6 +92,14 @@ export default function HomePage() {
     }
   };
 
+  const handleAuth = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (loggedIn) {
+      localStorage.removeItem("token");
+    }
+    navigate("/auth");
+  };
+
   const roomsRoute = () => {
     return loggedIn ? "/rooms" : "auth";
   };
@@ -127,6 +135,12 @@ export default function HomePage() {
             className="h-10 px-4 py-1 bg-[#147324] text-white text-sm rounded-md flex items-center"
           >
             Ask a Question
+          </button>
+          <button
+            onClick={handleAuth}
+            className="h-10 px-4 py-1 bg-neutral-200 text-sm rounded-md flex items-center"
+          >
+            {!loggedIn ? "Login" : "Logout"}
           </button>
           <div className="w-10 h-10 rounded-full bg-gray-400"></div>
         </div>
