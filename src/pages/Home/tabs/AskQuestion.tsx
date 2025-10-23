@@ -31,11 +31,11 @@ export default function AskQuestion() {
   return (
     <div className="flex-1 h-full flex flex-col justify-start items-start p-5">
       <h2 className="text-2xl">Ask a Question</h2>
-      <div>
+      <div className="w-full">
         <p className="mt-2 text-sm">Title</p>
         <input
           value={title}
-          className="w-full bg-neutral-100 text-md rounded p-1 mt-1"
+          className="w-full max-w-md bg-neutral-100 text-md rounded p-1 mt-1"
           type="text"
           onChange={(e) => setTitle(e.target.value)}
         />
