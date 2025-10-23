@@ -22,7 +22,6 @@ export const RoomTextArea: React.FC<RoomTextAreaProps> = ({
     }
   }, [text]);
 
-  // Update local text when body prop changes
   useEffect(() => {
     setText(body);
   }, [body]);
