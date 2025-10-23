@@ -1,4 +1,4 @@
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import SideBarButton from "../../components/sidebar_btn";
 import { TagButton } from "../../components/TagButton";
@@ -16,6 +16,8 @@ export default function HomePage() {
   const [, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("Questions");
   const location = useLocation();
+  const [loggedIn, setLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchTags = async () => {
@@ -59,8 +61,10 @@ export default function HomePage() {
       console.log(data);
       if (data.username) {
         console.log("Logged in");
+        setLoggedIn(true);
       } else {
         console.log("Logged out");
+        setLoggedIn(false);
       }
       const formattedQuestions = data.questions.map((q: any) => ({
         id: q._id,
@@ -77,6 +81,19 @@ export default function HomePage() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleAskQuestion = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (loggedIn) {
+      navigate("/new-question");
+    } else {
+      navigate("/auth");
+    }
+  };
+
+  const roomsRoute = () => {
+    return loggedIn ? "/rooms" : "auth";
   };
 
   const toggleTag = (id: string) => {
@@ -105,12 +122,12 @@ export default function HomePage() {
           <input className="p-2 w-full" type="text" placeholder="Search" />
         </div>
         <div className="flex items-center justify-center gap-x-2">
-          <a
-            href="/new-question"
+          <button
+            onClick={handleAskQuestion}
             className="h-10 px-4 py-1 bg-[#147324] text-white text-sm rounded-md flex items-center"
           >
             Ask a Question
-          </a>
+          </button>
           <div className="w-10 h-10 rounded-full bg-gray-400"></div>
         </div>
       </header>
@@ -128,7 +145,7 @@ export default function HomePage() {
               isActive={activeTab === "Rooms"}
               onClick={setActiveTab}
               title="Rooms"
-              toLink="/rooms"
+              toLink={roomsRoute()}
               icon={ArrowRightFromLineIcon}
             />
           </div>
